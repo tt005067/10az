@@ -3,8 +3,11 @@ on:
   issues:
     types:
       - opened
+#* permissions:       we can pass to all jobs
 jobs:
   assign-label:
+    permissions:
+      issues: write #? ex we set permission just for being  able to successfully edit this issue,and for ex would not be able to explore the code of the Repository or manipulate the actions added to this Repository,to this Repository,ofcousre we cans set for other things like actions ,pull-requests,...
     runs-on: ubuntu-latest
     steps:
       - name: Assign label
@@ -18,3 +21,6 @@ jobs:
               "labels": ["bug"]
             }' \
           --fail
+
+#* we can set permission for actions and jobs, we can set for all jobs or for specific one
+#* https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs
