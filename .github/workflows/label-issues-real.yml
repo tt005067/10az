@@ -31,4 +31,10 @@ jobs:
 #? if you don't add this permissions key,your workflow and its jobs has quite permissive permissions.
 #? https://docs.github.com/en/actions/security-guides/automatic-token-authentication#permissions-for-the-github_token
 #! almost in all Scopes, the permission is read/write
-#* And to enable this more restrictive default,all you have to do is go to the settings>Actions>Geeneral we can finbe more scurity for actions and workflows.check Read repository contents and packages permissions (by default is active)
+#* And to enable this more restrictive default,all you have to do is go to the settings>Actions>General we can find more scurity for actions and workflows.check Read repository contents and packages permissions (by default is active)
+
+#? settings>Actions>General check this path to see more security options.
+
+#? in docker custom action ,we stored our aws access ke to the secrest.we can improve the security ofcourse,the regular issues about it are frist we ma need them in other part of workflow so we need to write them again and again, the other one these access key gives full access to the AWS wherase we need just uploading to the AWS , that's not good ,soloution OPEN ID Connect
+#?https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect
+# * The idea simply is that your GitHub Action workflow The idea simply is that your GitHub Action workflow from the third-party provider from AWS, for example, and then that permission is granted if everything has been set up correctly but it's only valid for a short amount of time and it is restricted to the kind of action that must be performed and doesn't grant any additional permissions.So permissions are requested by the workflow dynamically when they're needed.
