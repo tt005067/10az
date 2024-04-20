@@ -28,3 +28,5 @@ jobs:
 #? so we set persmission but why ?(with out it the default permission will be applied) : Well, for example, if you would be vulnerable to script injection,those scripts would not be able to do things that are not allowed by Permissions.So you have some additional layer of protection,even though you should of course, try to defend against Script Injection in the first place.But even if you don't worry about Script Injection you also make sure that any actions,you are using are not doing things you don't want them to do.
 
 #? So even if you haven't analyzed all these actions deeply,which you should, if you don't trust the authors but if you haven't done that at least you know what they can theoretically do.so always good to set permission here we give just wirte for issue and not read!
+
+#! So adding Permissions does not protect you against all possible problems,but it is an additional layer you should consider implementing.
