@@ -15,3 +15,5 @@ jobs:
           else
           echo "Issue is not about a bug"
           fi
+
+#| if we write this title in issue :  a"; echo got your secrets" , we can see the echo will be executed, and some people may use them to get some sensetive info.ex some pre-defined known value like , AWS_KEY.
