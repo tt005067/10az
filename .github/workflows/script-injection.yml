@@ -8,10 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Assign label
+        #uses:
         env:
           TITLE: ${{github.event.issue.title}} #* with this way, we'll no longer have this injection problem,because now this title here, the title that's set for the issue will be evaluated,and used outside of this shell.
-        run: |
-
+        run:
+          | #? This code here, which comes after run,is executed in the shell of this runner machine.And here I'm getting the title of the issue that was created, and it's being inserted in this command that's being executed.At the point of time the command will be executed,the actual title will have been interpolated already.So therefore the title is treated as part of the command in the end.
           if [[ "$TITLE" == *"bug"* ]]; then
           echo "Issue is about a bug!"
           else
@@ -21,3 +22,7 @@ jobs:
 #| if we write this title in issue :  a"; echo got your secrets" , we can see the echo will be executed, and some people may use them to get some sensetive info.ex some pre-defined known value like , AWS_KEY.
 
 #* So if you are using user generated values like the title of an issue, it's strongly recommended that you first store them in an environment variable,before using those values anywhere in the commands
+
+#! So script injection is one potential problem you should be aware of, and you can defend against it by using actions instead of using your own run commands,or using environment variables where you store user entered data before using it.
+
+#? another solution : You could be using some action instead of your own command.If you had an action that does what you wanna do,that would be better because if you just passed a title as a input to the action, it will not be executed in any shell, but instead it will be extracted,and handled by GitHub, and will never reach a shell.
