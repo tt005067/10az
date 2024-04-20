@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Assign label
         env:
-          TITLE: ${{github.event.issue.title}}
+          TITLE: ${{github.event.issue.title}} #* with this way, we'll no longer have this injection problem,because now this title here, the title that's set for the issue will be evaluated,and used outside of this shell.
         run: |
 
           if [[ "$TITLE" == *"bug"* ]]; then
@@ -19,3 +19,5 @@ jobs:
           fi
 
 #| if we write this title in issue :  a"; echo got your secrets" , we can see the echo will be executed, and some people may use them to get some sensetive info.ex some pre-defined known value like , AWS_KEY.
+
+#* So if you are using user generated values like the title of an issue, it's strongly recommended that you first store them in an environment variable,before using those values anywhere in the commands
